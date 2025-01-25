@@ -1,0 +1,11 @@
+{
+    "require": {
+        "nyholm/psr7-server": "^1.1",
+        "nyholm/psr7": "^1.8",
+        "league/container": "^4.2",
+        "league/route": "^6.2",
+        "laminas/laminas-httphandlerrunner": "^2.11",
+        "laminas/laminas-diactoros": "^3.5",
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
