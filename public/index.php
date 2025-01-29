@@ -9,18 +9,29 @@ use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
 use League\Route\Strategy\JsonStrategy;
 use League\Route\Router;
 use Dotenv\Dotenv;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+use Wii\Middleware\AccessControlMiddleware;
+use Wii\Middleware\FullertonTestRequestParamsValidatorMiddleware;
+use Laminas\Diactoros\ServerRequestFactory;
+use League\Container\Container;
+use Wii\Dao\FullertonTestDao;
 
-$container = new League\Container\Container();
+
+$container = new Container();
 
 Dotenv::createImmutable(__DIR__.'/../')->load();
+
 
 $container->add('pdo', \PDO::class)
     ->addArgument($_ENV['DB_DSN'])
     ->addArgument($_ENV['DB_USERNAME'])
     ->addArgument($_ENV['DB_PASSWORD']);
+    
+$container->add('ft_dao', FullertonTestDao::class)
+    ->addArgument($container->get('pdo'));    
 
-
-$request = Laminas\Diactoros\ServerRequestFactory::fromGlobals(
+$request = ServerRequestFactory::fromGlobals(
     $_SERVER, $_GET, $_POST
 );
 
@@ -28,19 +39,21 @@ $responseFactory = new ResponseFactory();
 
 $strategy = new JsonStrategy($responseFactory);
 $router   = (new Router)->setStrategy($strategy);
+$router->middleware(new AccessControlMiddleware);
+
 
 $router->map('GET', '/tests/fullerton', function (ServerRequestInterface $request) use ($container): array {
 
-    // $testCode = $request->getQueryParams()['test_code'];
-    $age = (float) $request->getQueryParams()['age'];
+    $testCode = $request->getQueryParams()['test_code'];
+    $age = (int) $request->getQueryParams()['age'];
     $sex = $request->getQueryParams()['sex'];
     $result = (float) $request->getQueryParams()['result'];
+
+    $assessment = $container->get('ft_dao')->fetch($testCode, $age, $sex, $result);
+
+    return $assessment;
     
-    return [
-        'sex'   => $sex,
-        'age' => $age,
-    ];
-});
+})->middleware(new FullertonTestRequestParamsValidatorMiddleware);
 
 $response = $router->dispatch($request);
 
