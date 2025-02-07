@@ -42,16 +42,16 @@ $router   = (new Router)->setStrategy($strategy);
 $router->middleware(new AccessControlMiddleware);
 
 
-$router->map('GET', '/tests/fullerton', function (ServerRequestInterface $request) use ($container): array {
+$router->map('GET', '/api/tests/fullerton', function (ServerRequestInterface $request) use ($container): array {
 
     $testCode = $request->getQueryParams()['test_code'];
     $age = (int) $request->getQueryParams()['age'];
     $sex = $request->getQueryParams()['sex'];
     $result = (float) $request->getQueryParams()['result'];
 
-    $assessment = $container->get('ft_dao')->fetch($testCode, $age, $sex, $result);
+    $evaluation = $container->get('ft_dao')->fetch($testCode, $age, $sex, $result);
 
-    return $assessment;
+    return $evaluation;
     
 })->middleware(new FullertonTestRequestParamsValidatorMiddleware);
 
