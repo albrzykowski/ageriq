@@ -15,7 +15,7 @@ class AccessControlMiddleware implements MiddlewareInterface
         $response = $handler->handle($request);
         $response = $response->withHeader('Access-Control-Allow-Origin', '*')
             ->withHeader('Access-Control-Allow-Methods',  'GET, POST');
-            
+
         return $response;
     }
 }

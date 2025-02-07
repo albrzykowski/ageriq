@@ -16,15 +16,22 @@ class FullertonTestDao
         $query = <<<EOT
             SELECT
                 test_name, test_code,
-                sex, min_age, max_age, 
-                min_ref, max_ref,
+                sex, min_age, max_age,
+            CASE
+                WHEN test_code IN('arm_curl', 'chair_stand', 'two_min_step') THEN CAST(min_ref AS INTEGER)
+                ELSE min_ref
+            END as min_ref,
+            CASE
+                WHEN test_code IN('arm_curl', 'chair_stand', 'two_min_step') THEN CAST(max_ref AS INTEGER)
+                ELSE max_ref
+            END as max_ref,
             CASE
                 WHEN min_ref < max_ref AND :result < min_ref THEN 'below normal'
                 WHEN min_ref < max_ref AND :result > max_ref THEN 'above normal'
                 WHEN min_ref > max_ref AND :result > min_ref THEN 'below normal'
                 WHEN min_ref > max_ref AND :result < max_ref THEN 'above normal'
                 ELSE 'normal'
-            END as assessment
+            END as evaluation
             FROM public.fullerton_test WHERE
                 test_code = :test_code AND 
                 :age <= min_age and :age <= max_age AND

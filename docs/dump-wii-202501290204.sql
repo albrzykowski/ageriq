@@ -46,11 +46,11 @@ COMMENT ON SCHEMA public IS 'standard public schema';
 CREATE TYPE public.fullerton_test_name AS ENUM (
     'chair_stand',
     'arm_curl',
-    '6_min_walk',
-    '2_min_step',
+    'six_min_walk',
+    'two_min_step',
     'chair_sit_and_reach',
     'back_scratch',
-    '8_ft_up_and_go'
+    'eight_ft_up_and_go'
 );
 
 
@@ -121,20 +121,20 @@ Arm curl	arm_curl	F	75	79	11.00	17.00	\N	\N	\N
 Arm curl	arm_curl	F	80	84	10.00	16.00	\N	\N	\N
 Arm curl	arm_curl	F	85	89	10.00	15.00	\N	\N	\N
 Arm curl	arm_curl	F	90	94	8.00	13.00	\N	\N	\N
-6-Min Walk	6_min_walk	F	60	64	498.35	603.50	545.00	660.00	\N
-6-Min Walk	6_min_walk	F	65	69	457.20	580.60	500.00	635.00	\N
-6-Min Walk	6_min_walk	F	70	74	438.91	562.40	480.00	615.00	\N
-6-Min Walk	6_min_walk	F	75	79	393.19	534.90	430.00	585.00	\N
-6-Min Walk	6_min_walk	F	80	84	352.04	493.80	385.00	540.00	\N
-6-Min Walk	6_min_walk	F	85	89	310.90	466.30	340.00	510.00	\N
-6-Min Walk	6_min_walk	F	90	94	251.46	402.30	275.00	440.00	\N
-2-Min Step	2_min_step	F	60	64	75.00	107.00	\N	\N	\N
-2-Min Step	2_min_step	F	65	69	73.00	107.00	\N	\N	\N
-2-Min Step	2_min_step	F	70	74	68.00	101.00	\N	\N	\N
-2-Min Step	2_min_step	F	75	79	68.00	100.00	\N	\N	\N
-2-Min Step	2_min_step	F	80	84	60.00	91.00	\N	\N	\N
-2-Min Step	2_min_step	F	85	89	55.00	85.00	\N	\N	\N
-2-Min Step	2_min_step	F	90	94	44.00	72.00	\N	\N	\N
+6-Min Walk	six_min_walk	F	60	64	498.35	603.50	545.00	660.00	\N
+6-Min Walk	six_min_walk	F	65	69	457.20	580.60	500.00	635.00	\N
+6-Min Walk	six_min_walk	F	70	74	438.91	562.40	480.00	615.00	\N
+6-Min Walk	six_min_walk	F	75	79	393.19	534.90	430.00	585.00	\N
+6-Min Walk	six_min_walk	F	80	84	352.04	493.80	385.00	540.00	\N
+6-Min Walk	six_min_walk	F	85	89	310.90	466.30	340.00	510.00	\N
+6-Min Walk	six_min_walk	F	90	94	251.46	402.30	275.00	440.00	\N
+2-Min Step	two_min_step	F	60	64	75.00	107.00	\N	\N	\N
+2-Min Step	two_min_step	F	65	69	73.00	107.00	\N	\N	\N
+2-Min Step	two_min_step	F	70	74	68.00	101.00	\N	\N	\N
+2-Min Step	two_min_step	F	75	79	68.00	100.00	\N	\N	\N
+2-Min Step	two_min_step	F	80	84	60.00	91.00	\N	\N	\N
+2-Min Step	two_min_step	F	85	89	55.00	85.00	\N	\N	\N
+2-Min Step	two_min_step	F	90	94	44.00	72.00	\N	\N	\N
 Chair Sit-&-Rich	chair_sit_and_reach	F	60	64	-1.27	12.70	-0.50	5.00	\N
 Chair Sit-&-Rich	chair_sit_and_reach	F	65	69	-1.27	11.40	-0.50	4.50	\N
 Chair Sit-&-Rich	chair_sit_and_reach	F	70	74	-2.54	10.20	-1.00	4.00	\N
@@ -149,13 +149,13 @@ Back Scratch	back_scratch	F	75	79	-12.70	1.30	-5.00	0.50	\N
 Back Scratch	back_scratch	F	80	84	-13.97	0.00	-5.50	0.00	\N
 Back Scratch	back_scratch	F	85	89	-17.78	-2.50	-7.00	-1.00	\N
 Back Scratch	back_scratch	F	90	94	-20.32	-2.50	-8.00	-1.00	\N
-8-Ft Up-&-Go	8_ft_up_and_go	F	60	64	6.00	4.40	\N	\N	\N
-8-Ft Up-&-Go	8_ft_up_and_go	F	65	69	6.40	4.80	\N	\N	\N
-8-Ft Up-&-Go	8_ft_up_and_go	F	70	74	7.10	4.90	\N	\N	\N
-8-Ft Up-&-Go	8_ft_up_and_go	F	75	79	7.40	5.20	\N	\N	\N
-8-Ft Up-&-Go	8_ft_up_and_go	F	80	84	8.70	5.70	\N	\N	\N
-8-Ft Up-&-Go	8_ft_up_and_go	F	85	89	9.60	6.20	\N	\N	\N
-8-Ft Up-&-Go	8_ft_up_and_go	F	90	94	11.50	7.30	\N	\N	\N
+8-Ft Up-&-Go	eight_ft_up_and_go	F	60	64	6.00	4.40	\N	\N	\N
+8-Ft Up-&-Go	eight_ft_up_and_go	F	65	69	6.40	4.80	\N	\N	\N
+8-Ft Up-&-Go	eight_ft_up_and_go	F	70	74	7.10	4.90	\N	\N	\N
+8-Ft Up-&-Go	eight_ft_up_and_go	F	75	79	7.40	5.20	\N	\N	\N
+8-Ft Up-&-Go	eight_ft_up_and_go	F	80	84	8.70	5.70	\N	\N	\N
+8-Ft Up-&-Go	eight_ft_up_and_go	F	85	89	9.60	6.20	\N	\N	\N
+8-Ft Up-&-Go	eight_ft_up_and_go	F	90	94	11.50	7.30	\N	\N	\N
 Chair stand	chair_stand	M	60	64	14.00	19.00	\N	\N	\N
 Chair stand	chair_stand	M	65	69	12.00	18.00	\N	\N	\N
 Chair stand	chair_stand	M	70	74	12.00	17.00	\N	\N	\N
@@ -170,20 +170,20 @@ Arm curl	arm_curl	M	75	79	13.00	19.00	\N	\N	\N
 Arm curl	arm_curl	M	80	84	13.00	19.00	\N	\N	\N
 Arm curl	arm_curl	M	85	89	11.00	17.00	\N	\N	\N
 Arm curl	arm_curl	M	90	94	10.00	14.00	\N	\N	\N
-6-Min Walk	6_min_walk	M	60	64	557.78	672.10	610.00	735.00	\N
-6-Min Walk	6_min_walk	M	65	69	512.06	640.10	560.00	700.00	\N
-6-Min Walk	6_min_walk	M	70	74	498.35	621.80	545.00	680.00	\N
-6-Min Walk	6_min_walk	M	75	79	429.77	585.20	470.00	640.00	\N
-6-Min Walk	6_min_walk	M	80	84	406.91	553.20	445.00	605.00	\N
-6-Min Walk	6_min_walk	M	85	89	347.47	521.20	380.00	570.00	\N
-6-Min Walk	6_min_walk	M	90	94	278.89	457.20	305.00	500.00	\N
-2-Min Step	2_min_step	M	60	64	87.00	115.00	\N	\N	\N
-2-Min Step	2_min_step	M	65	69	86.00	116.00	\N	\N	\N
-2-Min Step	2_min_step	M	70	74	80.00	110.00	\N	\N	\N
-2-Min Step	2_min_step	M	75	79	73.00	109.00	\N	\N	\N
-2-Min Step	2_min_step	M	80	84	71.00	103.00	\N	\N	\N
-2-Min Step	2_min_step	M	85	89	59.00	91.00	\N	\N	\N
-2-Min Step	2_min_step	M	90	94	52.00	86.00	\N	\N	\N
+6-Min Walk	six_min_walk	M	60	64	557.78	672.10	610.00	735.00	\N
+6-Min Walk	six_min_walk	M	65	69	512.06	640.10	560.00	700.00	\N
+6-Min Walk	six_min_walk	M	70	74	498.35	621.80	545.00	680.00	\N
+6-Min Walk	six_min_walk	M	75	79	429.77	585.20	470.00	640.00	\N
+6-Min Walk	six_min_walk	M	80	84	406.91	553.20	445.00	605.00	\N
+6-Min Walk	six_min_walk	M	85	89	347.47	521.20	380.00	570.00	\N
+6-Min Walk	six_min_walk	M	90	94	278.89	457.20	305.00	500.00	\N
+2-Min Step	two_min_step	M	60	64	87.00	115.00	\N	\N	\N
+2-Min Step	two_min_step	M	65	69	86.00	116.00	\N	\N	\N
+2-Min Step	two_min_step	M	70	74	80.00	110.00	\N	\N	\N
+2-Min Step	two_min_step	M	75	79	73.00	109.00	\N	\N	\N
+2-Min Step	two_min_step	M	80	84	71.00	103.00	\N	\N	\N
+2-Min Step	two_min_step	M	85	89	59.00	91.00	\N	\N	\N
+2-Min Step	two_min_step	M	90	94	52.00	86.00	\N	\N	\N
 Chair Sit-&-Rich	chair_sit_and_reach	M	60	64	-6.35	10.20	-2.50	4.00	\N
 Chair Sit-&-Rich	chair_sit_and_reach	M	65	69	-7.62	7.60	-3.00	3.00	\N
 Chair Sit-&-Rich	chair_sit_and_reach	M	70	74	-8.89	6.40	-3.50	2.50	\N
@@ -198,13 +198,13 @@ Back Scratch	back_scratch	M	75	79	-22.86	-5.10	-9.00	-2.00	\N
 Back Scratch	back_scratch	M	80	84	-24.13	-5.10	-9.50	-2.00	\N
 Back Scratch	back_scratch	M	85	89	-25.40	-7.60	-10.00	-3.00	\N
 Back Scratch	back_scratch	M	90	94	-26.67	-10.20	-10.50	-4.00	\N
-8-Ft Up-&-Go	8_ft_up_and_go	M	60	64	5.60	3.80	\N	\N	\N
-8-Ft Up-&-Go	8_ft_up_and_go	M	65	69	5.70	4.30	\N	\N	\N
-8-Ft Up-&-Go	8_ft_up_and_go	M	70	74	6.00	4.20	\N	\N	\N
-8-Ft Up-&-Go	8_ft_up_and_go	M	75	79	7.20	4.60	\N	\N	\N
-8-Ft Up-&-Go	8_ft_up_and_go	M	80	84	7.60	5.20	\N	\N	\N
-8-Ft Up-&-Go	8_ft_up_and_go	M	85	89	8.90	5.30	\N	\N	\N
-8-Ft Up-&-Go	8_ft_up_and_go	M	90	94	10.00	6.20	\N	\N	\N
+8-Ft Up-&-Go	eight_ft_up_and_go	M	60	64	5.60	3.80	\N	\N	\N
+8-Ft Up-&-Go	eight_ft_up_and_go	M	65	69	5.70	4.30	\N	\N	\N
+8-Ft Up-&-Go	eight_ft_up_and_go	M	70	74	6.00	4.20	\N	\N	\N
+8-Ft Up-&-Go	eight_ft_up_and_go	M	75	79	7.20	4.60	\N	\N	\N
+8-Ft Up-&-Go	eight_ft_up_and_go	M	80	84	7.60	5.20	\N	\N	\N
+8-Ft Up-&-Go	eight_ft_up_and_go	M	85	89	8.90	5.30	\N	\N	\N
+8-Ft Up-&-Go	eight_ft_up_and_go	M	90	94	10.00	6.20	\N	\N	\N
 \.
 
 
