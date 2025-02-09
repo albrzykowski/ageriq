@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Senior Fitness Test - kalkulator online</title>
+      <meta name="description" content="Aplikacja do przeprowadzania testu Senior Fitness Test. Umożliwia wprowadzanie wyników i ocenę ich zgodności z normami dla osób starszych. Idealna dla fizjoterapeutów, seniorów oraz opiekunów osób starszych. Sprawdź kondycję fizyczną w prosty sposób.">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+      <link rel="stylesheet" href="https://cdn.rawgit.com/octoshrimpy/bulma-o-steps/master/bulma-steps.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  </head>
+  <body>
+    <section class="section">
+    <div class="container is-max-desktop">
+      <ul class="steps is-medium is-centered has-content-centered">
+        <li class="steps-segment is-active">
+          <span class="steps-marker">
+          <span class="icon">
+            <i class="fas fa-solid fa-book-medical"></i>
+          </span>
+          </span>
+          <div class="steps-content">
+          <p class="heading">Przeczytaj instrukcję</p>
+          </div>
+        </li>
+        <li class="steps-segment">
+          <span class="steps-marker">
+          <span class="icon">
+            <i class="fas fa-solid fa-pen-to-square"></i>
+          </span>
+          </span>
+          <div class="steps-content">
+          <p class="heading">Podaj wiek i płeć</p>
+          </div>
+        </li>
+        <li class="steps-segment">
+        <span class="steps-marker">
+          <span class="icon">
+          <i class="fa-solid fa-stethoscope"></i>
+          </span>
+        </span>
+        <div class="steps-content">
+          <p>Wykonaj test i poznaj wynik</p>
+        </div>
+        </li>
+      </ul>
+      <div class="panel is-success">
+        <h2 class="panel-heading step-1">Jak wykonać Senior Fitness Test?</h2>
+        <h2 class="panel-heading step-2 is-hidden">Twoje dane</h2>
+        <h2 class="panel-heading step-3 is-hidden">Wykonaj test</h2>
+        
+        <div class="panel-block">
+          <nav>
+            <div>
+              <button id="previous-step-button" class="button is-light">
+                <span>Poprzedni krok</span>
+              </button>
+              <button id="next-step-button" class="button is-success">
+                <span>Następny krok</span>
+                <span class="icon is-small">
+                  <i class="fas fa-circle-right"></i>
+                </span>
+              </button>
+            </div>
+          </nav>
+        </div>
+        <div class="panel-block step-1">
+          <div class="content"> 
+            <div class="block">
+            <p><strong>Senior Fitness Test</strong> to zestaw prostych ćwiczeń oceniających sprawność fizyczną osób <strong>starszych</strong>, pomiędzy 60-tym a 94-tym rokiem życia. Pomaga określić siłę, wytrzymałość, równowagę i elastyczność, co jest kluczowe dla zachowania samodzielności.</p>
+            </div>
+            
+            <div class="block">
+            <p>Do wykonania testu potrzebne są:</p>
+            <ul>
+              <li>
+                Krzesło bez podłokietników
+                <span class="icon has-text-success"><i class="fa-solid fa-chair"></i></span>
+              </li>
+              <li>
+                Stoper
+                <span class="icon has-text-success"><i class="fa-solid fa-stopwatch-20"></i></span>
+              </li>
+              <li>
+                Taśma miernicza
+                <span class="icon has-text-success"><i class="fa-solid fa-tape"></i></span>
+              </li>
+              <li>
+                Ciężarki (tylko dla jednego z testów) 2 kg (kobiety) lub 3,5 kg (mężczyźni) lub kilka innych możliwych modyfikacji [1, 2, 3].
+                <span class="icon has-text-success"><i class="fa-solid fa-dumbbell"></i></span>
+              </li>
+              <li>
+                Taśma lub przedmiot do oznaczenia odległości na podłodze
+                <span class="icon has-text-success"><i class="fa-solid fa-pencil"></i></span>
+              </li>
+            </ul>
+            <ol>
+              <li>
+                <i><a href="">Opisać</a></i>
+              <li>
+            </ol>
+            <p>Do wykonania Senior Fitness Test zaleca się <strong>pomieszczenie o wymiarach minimum 3m × 4m</strong> (dla test 6-minutowego marszu, zalecany jest korytarz o długości minimum 30m <span class="icon has-text-success"><i class="fa-solid fa-road"></i></span>), aby zapewnić bezpieczną przestrzeń do ćwiczeń. Dodatkowo, <strong>podłoże powinno być stabilne</strong>, a <strong>przestrzeń wolna od przeszkód</strong>, aby zminimalizować ryzyko upadków.</p>
+            </div>
+            
+            <div class="block">
+              <p>Cały <strong>zestaw testów trwa około 30 – 40 min.</strong> w zależności od kondycji uczestnika i organizacji pomiarów.</p>
+            </div>
+            
+            <div class="block">
+              <p>Test jest łatwy do przeprowadzenia i dostosowany do możliwości seniorów, a jego wyniki pomagają w planowaniu treningów i rehabilitacji.</p>
+            </div>
+          </div>
+        </div>
+        <!-- end step-1 -->
+        <div class="panel-block step-2 is-hidden">
+          <form>
+            <div class="field">
+              <label class="label">Wiek</label>
+              <div class="control">
+                <input name="age" class="input" type="number" min="60" max="94">
+              </div>
+              <p class="help is-danger">Pole wymagane o wartościach z zakresu 60 - 94</p>
+            </div>
+            <div class="field">
+              <div class="radios control">
+                <label class="radio">
+                <input type="radio" name="sex" value="F">
+                Kobieta
+                </label>
+                <label class="radio">
+                <input type="radio" name="sex" value="M">
+                Mężczyzna
+                </label>
+              </div>
+              <p class="help is-danger">Pole wymagane</p>
+            </div>
+          </form>
+        </div>
+        <!-- end step-2 -->
+        <div class="panel-block step-3 is-hidden">
+          <div class="container">
+            <div class="columns is-clearfix test" id="arm_curl">
+              <div class="column test-form is-7">
+                <div class="block">
+                  <h3 class="is-size-6 has-text-weight-semibold">Próba zginania przedramienia (Arm Curl Test)
+                  <span class="icon has-text-success"><i class="fa-solid fa-chair"></i></span>
+                  <span class="icon has-text-success"><i class="fa-solid fa-stopwatch-20"></i></span>
+                  <span class="icon has-text-success"><i class="fa-solid fa-dumbbell"></i></span>
+                  </h3>
+                  
+                  <a href="#" class="has-text-black js-modal-trigger">
+                    Jak wykonać test
+                    <span class="icon has-text-info"><i class="fa-solid fa-circle-question"></i></span>
+                  </a>
+                  <p>
+                    Czas trwania to około 30 sekund 
+                    <span class="icon has-text-primary"><i class="fa-solid fa-clock"></i></span>
+                  </p>
+                </div>
+                <div class="block">
+                  <div class="field has-addons">
+                    <div class="control">
+                      <input class="input" type="text"  placeholder="liczba powtórzeń">
+                    </div>
+                    <div class="control">
+                      <button class="button is-success">
+                        Sprawdź wynik
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end column -->
+              <div class="column test-result">
+                <div class="block result">
+                  <div class="is-hidden result below"><strong>Twój wynik jest poniżej normy</strong><span class="icon has-text-danger"><i class="fa-solid fa-face-frown"></i></span></div>
+                  <div class="is-hidden result normal"><strong>Twój wynik jest w normie</strong><span class="icon has-text-success"><i class="fa-solid fa-face-smile"></i></span></div>
+                  <div class="is-hidden result above"><strong>Twój wynik jest powyżej normy!</strong><span class="icon has-text-success"><i class="fa-solid fa-face-laugh"></i></span></div>
+                  <div class="is-hidden result-description">Norma dla Twojej płci i wieku wynosi od <span id="lower-bound"></span> do <span id="upper-bound"></span> powtórzeń</div>
+                </div>
+              </div>
+              <!-- end column -->
+              <div class="modal">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                  <header class="modal-card-head">
+                    <p class="modal-card-title">Jak wykonać test próby zginania przedramienia</p>
+                    <button class="delete" aria-label="close"></button>
+                  </header>
+                  <section class="modal-card-body">
+                    <div class="content">
+                      <h6>Jak wykonać test?</h6>
+                      <ol>
+                        <li>Usiądź na krześle z prostymi plecami, stopami płasko na podłodze.</li>
+                        <li>Weź ciężarki w dominującą rękę (tą, którą częściej używasz) - 2,27 kg (kobiety) lub 3,63 kg (mężczyźni).</li>
+                        <li>Zegnij ramię w łokciu, unosząc hantlę do pełnego zgięcia, a następnie opuść do pozycji wyjściowej.</li>
+                        <li>Wykonuj ruchy w równym tempie przez 30 sekund.</li>
+                        <li>Policz liczbę pełnych powtórzeń (ruch w górę i w dół liczy się jako 1).</li>
+                        <li>Wprowadź wynik do aplikacji – liczbę powtórzeń w ciągu 30 sekund.</li>
+                      </ol>
+                    </div>
+                  </section>
+                  <footer class="modal-card-foot">
+                    <div class="buttons">
+                      <button class="button">Zamknij</button>
+                    </div>
+                  </footer>
+                </div>
+              </div>
+              <!-- end modal -->
+            </div>
+            <!-- end columns 1st -->
+            <div class="columns is-clearfix test" id="back_scratch">
+              <div class="column test-form is-7">
+                <div class="block">
+                  <h3 class="is-size-6 has-text-weight-semibold">Próba "drapania po plecach" (Back Scratch)
+                  <span class="icon has-text-success"><i class="fa-solid fa-chair"></i></span>
+                  <span class="icon has-text-success"><i class="fa-solid fa-tape"></i></span>
+                  </h3>
+                  
+                  <a href="#" class="has-text-black js-modal-trigger">
+                    Jak wykonać test
+                    <span class="icon has-text-info"><i class="fa-solid fa-circle-question"></i></span>
+                  </a>
+                  <p>
+                    Czas trwania to około 1-2 minuty 
+                    <span class="icon has-text-primary"><i class="fa-solid fa-clock"></i></span>
+                  </p>
+                </div>
+                <div class="block">
+                  <div class="field has-addons">
+                    <div class="control">
+                      <input class="input" type="text"  placeholder="cm">
+                    </div>
+                    <div class="control">
+                      <button class="button is-success">
+                        Sprawdź wynik
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end column -->
+              <div class="column test-result">
+                <div class="block result">
+                  <div class="is-hidden result below"><strong>Twój wynik jest poniżej normy</strong><span class="icon has-text-danger"><i class="fa-solid fa-face-frown"></i></span></div>
+                  <div class="is-hidden result normal"><strong>Twój wynik jest w normie</strong><span class="icon has-text-success"><i class="fa-solid fa-face-smile"></i></span></div>
+                  <div class="is-hidden result above"><strong>Twój wynik jest powyżej normy!</strong><span class="icon has-text-success"><i class="fa-solid fa-face-laugh"></i></span></div>
+                  <div class="is-hidden result-description">Norma dla Twojej płci i wieku wynosi od <span id="lower-bound"></span> do <span id="upper-bound"></span> cm</div>
+                </div>
+              </div>
+              <!-- end column -->
+              <div class="modal">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                  <header class="modal-card-head">
+                    <p class="modal-card-title">Jak wykonać test próby "drapania po plecach" </p>
+                    <button class="delete" aria-label="close"></button>
+                  </header>
+                  <section class="modal-card-body">
+                    <div class="content">
+                      <h6>Jak wykonać test?</h6>
+                      <ol>
+                        <li>Stań prosto.</li>
+                        <li>Podnieś jedną rękę nad głowę i zegnij ją za plecy.</li>
+                        <li>Drugą rękę podnieś od dołu i spróbuj dotknąć palców górnej ręki.</li>
+                        <li>Zmierz odległość między palcami (jeśli się dotykają, wynik to 0 cm).</li>
+                        <li>Powtórz test na drugą stronę.</li>
+                        <li>Wprowadź wynik w centymetrach do aplikacji</li>
+                      </ol>
+                    </div>
+                  </section>
+                  <footer class="modal-card-foot">
+                    <div class="buttons">
+                      <button class="button">Zamknij</button>
+                    </div>
+                  </footer>
+                </div>
+              </div>
+              <!-- end modal -->
+            </div>
+            <!-- end columns 2nd -->
+            <div class="columns is-clearfix test" id="chair_stand">
+              <div class="column test-form is-7">
+                <div class="block">
+                  <h3 class="is-size-6 has-text-weight-semibold">Wstawianie z krzesła w ciągu 30 sek. (30 Second Chair Stand)
+                  <span class="icon has-text-success"><i class="fa-solid fa-chair"></i></span>
+                  <span class="icon has-text-success"><i class="fa-solid fa-stopwatch-20"></i></span>
+                  </h3>
+                  
+                  <a href="#" class="has-text-black js-modal-trigger">
+                    Jak wykonać test
+                    <span class="icon has-text-info"><i class="fa-solid fa-circle-question"></i></span>
+                  </a>
+                  <p>
+                    Czas trwania to około 30 sekund 
+                    <span class="icon has-text-primary"><i class="fa-solid fa-clock"></i></span>
+                  </p>
+                </div>
+                <div class="block">
+                  <div class="field has-addons">
+                    <div class="control">
+                      <input class="input" type="text"  placeholder="liczba powtórzeń">
+                    </div>
+                    <div class="control">
+                      <button class="button is-success">
+                        Sprawdź wynik
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end column -->
+              <div class="column test-result">
+                <div class="block result">
+                  <div class="is-hidden result below"><strong>Twój wynik jest poniżej normy</strong><span class="icon has-text-danger"><i class="fa-solid fa-face-frown"></i></span></div>
+                  <div class="is-hidden result normal"><strong>Twój wynik jest w normie</strong><span class="icon has-text-success"><i class="fa-solid fa-face-smile"></i></span></div>
+                  <div class="is-hidden result above"><strong>Twój wynik jest powyżej normy!</strong><span class="icon has-text-success"><i class="fa-solid fa-face-laugh"></i></span></div>
+                  <div class="is-hidden result-description">Norma dla Twojej płci i wieku wynosi od <span id="lower-bound"></span> do <span id="upper-bound"></span> powtórzeń</div>
+                </div>
+              </div>
+              <!-- end column -->
+              <div class="modal">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                  <header class="modal-card-head">
+                    <p class="modal-card-title">Jak wykonać test wstawiania z krzesła w ciągu 30 sek.</p>
+                    <button class="delete" aria-label="close"></button>
+                  </header>
+                  <section class="modal-card-body">
+                    <div class="content">
+                      <h6>Jak wykonać test?</h6>
+                      <ol>
+                        <li>Usiądź na stabilnym krześle, stopy płasko na podłodze, ręce skrzyżowane na klatce piersiowej.</li>
+                        <li>Na sygnał rozpocznij wstawanie i siadanie bez użycia rąk.</li>
+                        <li>Wykonuj jak najwięcej powtórzeń w ciągu 30 sekund.</li>
+                        <li>Wprowadź wynik do aplikacji – liczbę pełnych wstań.</li>
+                      </ol>
+                    </div>
+                  </section>
+                  <footer class="modal-card-foot">
+                    <div class="buttons">
+                      <button class="button">Zamknij</button>
+                    </div>
+                  </footer>
+                </div>
+              </div>
+              <!-- end modal -->
+            </div>
+            <!-- end columns 3rd -->
+            <div class="columns is-clearfix test" id="chair_sit_and_reach">
+              <div class="column test-form is-7">
+                <div class="block">
+                  <h3 class="is-size-6 has-text-weight-semibold">Próba "siad i dosięgnięcie" (Chair Sit-and-Reach)
+                  <span class="icon has-text-success"><i class="fa-solid fa-chair"></i></span>
+                  <span class="icon has-text-success"><i class="fa-solid fa-tape"></i></span>
+                  </h3>
+                  
+                  <a href="#" class="has-text-black js-modal-trigger">
+                    Jak wykonać test
+                    <span class="icon has-text-info"><i class="fa-solid fa-circle-question"></i></span>
+                  </a>
+                  <p>
+                    Czas trwania to około 1-2 minuty 
+                    <span class="icon has-text-primary"><i class="fa-solid fa-clock"></i></span>
+                  </p>
+                </div>
+                <div class="block">
+                  <div class="field has-addons">
+                    <div class="control">
+                      <input class="input" type="text"  placeholder="cm">
+                    </div>
+                    <div class="control">
+                      <button class="button is-success">
+                        Sprawdź wynik
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end column -->
+              <div class="column test-result">
+                <div class="block result">
+                  <div class="is-hidden result below"><strong>Twój wynik jest poniżej normy</strong><span class="icon has-text-danger"><i class="fa-solid fa-face-frown"></i></span></div>
+                  <div class="is-hidden result normal"><strong>Twój wynik jest w normie</strong><span class="icon has-text-success"><i class="fa-solid fa-face-smile"></i></span></div>
+                  <div class="is-hidden result above"><strong>Twój wynik jest powyżej normy!</strong><span class="icon has-text-success"><i class="fa-solid fa-face-laugh"></i></span></div>
+                  <div class="is-hidden result-description">Norma dla Twojej płci i wieku wynosi od <span id="lower-bound"></span> do <span id="upper-bound"></span> cm</div>
+                </div>
+              </div>
+              <!-- end column -->
+              <div class="modal">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                  <header class="modal-card-head">
+                    <p class="modal-card-title">Jak wykonać test próby "siad i dosięgnięcie"</p>
+                    <button class="delete" aria-label="close"></button>
+                  </header>
+                  <section class="modal-card-body">
+                    <div class="content">
+                      <h6>Jak wykonać test?</h6>
+                      <ol>
+                        <li>Usiądź na brzegu stabilnego krzesła, jedna noga wyprostowana, pięta na podłodze.</li>
+                        <li>Drugą nogę zegnij tak, aby stopa była płasko na podłodze.</li>
+                        <li>Wyciągnij ręce do przodu i pochyl się w stronę wyprostowanej nogi.</li>
+                        <li>Spróbuj dosięgnąć palców stopy, nie uginając kolana.</li>
+                        <li>Zmierz odległość między palcami dłoni a stopą (jeśli dotykasz, wynik to 0 cm).</li>
+                        <li>Powtórz test na drugą nogę.</li>
+                        <li>Wprowadź wynik w centymetrach do aplikacji</li>
+                      </ol>
+                    </div>
+                  </section>
+                  <footer class="modal-card-foot">
+                    <div class="buttons">
+                      <button class="button">Zamknij</button>
+                    </div>
+                  </footer>
+                </div>
+              </div>
+              <!-- end modal -->
+            </div>
+            <!-- end columns 4th -->
+            <div class="columns is-clearfix test" id="six_min_walk">
+              <div class="column test-form is-7">
+                <div class="block">
+                  <h3 class="is-size-6 has-text-weight-semibold">Test 6-minutowego marszu (6-Minute Walk Test)
+                  <span class="icon has-text-success"><i class="fa-solid fa-tape"></i></span>
+                  <span class="icon has-text-success"><i class="fa-solid fa-pencil"></i></span>
+                  <span class="icon has-text-success"><i class="fa-solid fa-road"></i></span>
+                  </h3>
+                  
+                  <a href="#" class="has-text-black js-modal-trigger">
+                    Jak wykonać test
+                    <span class="icon has-text-info"><i class="fa-solid fa-circle-question"></i></span>
+                  </a>
+                  <p>
+                    Czas trwania to około 6 minut 
+                    <span class="icon has-text-primary"><i class="fa-solid fa-clock"></i></span>
+                  </p>
+                </div>
+                <div class="block">
+                  <div class="field has-addons">
+                    <div class="control">
+                      <input class="input" type="text"  placeholder="m">
+                    </div>
+                    <div class="control">
+                      <button class="button is-success">
+                        Sprawdź wynik
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end column -->
+              <div class="column test-result">
+                <div class="block result">
+                  <div class="is-hidden result below"><strong>Twój wynik jest poniżej normy</strong><span class="icon has-text-danger"><i class="fa-solid fa-face-frown"></i></span></div>
+                  <div class="is-hidden result normal"><strong>Twój wynik jest w normie</strong><span class="icon has-text-success"><i class="fa-solid fa-face-smile"></i></span></div>
+                  <div class="is-hidden result above"><strong>Twój wynik jest powyżej normy!</strong><span class="icon has-text-success"><i class="fa-solid fa-face-laugh"></i></span></div>
+                  <div class="is-hidden result-description">Norma dla Twojej płci i wieku wynosi od <span id="lower-bound"></span> do <span id="upper-bound"></span> m</div>
+                </div>
+              </div>
+              <!-- end column -->
+              <div class="modal">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                  <header class="modal-card-head">
+                    <p class="modal-card-title">Jak wykonać test 6-minutowego marszu</p>
+                    <button class="delete" aria-label="close"></button>
+                  </header>
+                  <section class="modal-card-body">
+                    <div class="content">
+                      <h6>Jak wykonać test?</h6>
+                      <ol>
+                        <li>Wybierz prostą trasę o długości co najmniej 30 metrów.</li>
+                        <li>Ustaw stoper na 6 minut.</li>
+                        <li>Maszeruj jak najszybciej, ale w komfortowym tempie.</li>
+                        <li>Jeśli potrzebujesz, możesz zwolnić lub zatrzymać się, ale staraj się iść dalej.</li>
+                        <li>Po 6 minutach zatrzymaj się i zmierz pokonany dystans.</li>
+                        <li>Wprowadź wynik w metrach do aplikacji.</li>
+                      </ol>
+                    </div>
+                  </section>
+                  <footer class="modal-card-foot">
+                    <div class="buttons">
+                      <button class="button">Zamknij</button>
+                    </div>
+                  </footer>
+                </div>
+              </div>
+              <!-- end modal -->
+            </div>
+            <!-- end columns 5th -->
+            <div class="columns is-clearfix test" id="two_min_step">
+              <div class="column test-form is-7">
+                <div class="block">
+                  <h3 class="is-size-6 has-text-weight-semibold">Próba 2-minutowego marszu (2-Minute Step-in-Place)
+                  <span class="icon has-text-success"><i class="fa-solid fa-stopwatch-20"></i></span>
+                  <span class="icon has-text-success"><i class="fa-solid fa-tape"></i></span>
+                  </h3>
+                  
+                  <a href="#" class="has-text-black js-modal-trigger">
+                    Jak wykonać test
+                    <span class="icon has-text-info"><i class="fa-solid fa-circle-question"></i></span>
+                  </a>
+                  <p>
+                    Czas trwania to około 2 minuty 
+                    <span class="icon has-text-primary"><i class="fa-solid fa-clock"></i></span>
+                  </p>
+                </div>
+                <div class="block">
+                  <div class="field has-addons">
+                    <div class="control">
+                      <input class="input" type="text"  placeholder="liczba kroków">
+                    </div>
+                    <div class="control">
+                      <button class="button is-success">
+                        Sprawdź wynik
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end column -->
+              <div class="column test-result">
+                <div class="block result">
+                  <div class="is-hidden result below"><strong>Twój wynik jest poniżej normy</strong><span class="icon has-text-danger"><i class="fa-solid fa-face-frown"></i></span></div>
+                  <div class="is-hidden result normal"><strong>Twój wynik jest w normie</strong><span class="icon has-text-success"><i class="fa-solid fa-face-smile"></i></span></div>
+                  <div class="is-hidden result above"><strong>Twój wynik jest powyżej normy!</strong><span class="icon has-text-success"><i class="fa-solid fa-face-laugh"></i></span></div>
+                  <div class="is-hidden result-description">Norma dla Twojej płci i wieku wynosi od <span id="lower-bound"></span> do <span id="upper-bound"></span> kroków</div>
+                </div>
+              </div>
+              <!-- end column -->
+              <div class="modal">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                  <header class="modal-card-head">
+                    <p class="modal-card-title">Jak wykonać test próby 2-minutowego marszu</p>
+                    <button class="delete" aria-label="close"></button>
+                  </header>
+                  <section class="modal-card-body">
+                    <div class="content">
+                      <h6>Jak wykonać test?</h6>
+                      <ol>
+                        <li>Stań prosto przy ścianie lub krześle dla równowagi, jeśli to konieczne.</li>
+                        <li>Podnieś kolano do wysokości połowy uda (poziom między biodrem a kolanem).</li>
+                        <li>Na sygnał rozpocznij marsz w miejscu, unosząc kolana jak najwyżej.</li>
+                        <li>Maszeruj przez 2 minuty w równym tempie.</li>  
+                        <li>Zlicz liczbę uniesień kolana (liczy się tylko jedno kolano).</li>
+                        <li>Wprowadź wynik do aplikacji – liczbę uniesień kolana (liczy się tylko jedno kolano).</li>
+                      </ol>
+                    </div>
+                  </section>
+                  <footer class="modal-card-foot">
+                    <div class="buttons">
+                      <button class="button">Zamknij</button>
+                    </div>
+                  </footer>
+                </div>
+              </div>
+              <!-- end modal -->
+            </div>
+            <!-- end columns 6th -->
+            <div class="columns is-clearfix test" id="eight_ft_up_and_go">
+              <div class="column test-form is-7">
+                <div class="block">
+                  <h3 class="is-size-6 has-text-weight-semibold">Próba "8 stóp – wstań i idź" (8 – Foot Up-and-Go) 
+                  <span class="icon has-text-success"><i class="fa-solid fa-chair"></i></span>
+                    <span class="icon has-text-success"><i class="fa-solid fa-stopwatch-20"></i></span>
+                    <span class="icon has-text-success"><i class="fa-solid fa-tape"></i></span>
+                  </h3>
+                  
+                  <a href="#" class="has-text-black js-modal-trigger">
+                    Jak wykonać test
+                    <span class="icon has-text-info"><i class="fa-solid fa-circle-question"></i></span>
+                  </a>
+                  <p>
+                    Czas trwania to około 10-20 sekund 
+                    <span class="icon has-text-primary"><i class="fa-solid fa-clock"></i></span>
+                  </p>
+                </div>
+                <div class="block">
+                  <div class="field has-addons">
+                    <div class="control">
+                      <input class="input" type="text"  placeholder="sek.">
+                    </div>
+                    <div class="control">
+                      <button class="button is-success">
+                        Sprawdź wynik
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end column -->
+              <div class="column test-result">
+                <div class="block result">
+                  <div class="is-hidden result below"><strong>Twój wynik jest poniżej normy</strong><span class="icon has-text-danger"><i class="fa-solid fa-face-frown"></i></span></div>
+                  <div class="is-hidden result normal"><strong>Twój wynik jest w normie</strong><span class="icon has-text-success"><i class="fa-solid fa-face-smile"></i></span></div>
+                  <div class="is-hidden result above"><strong>Twój wynik jest powyżej normy!</strong><span class="icon has-text-success"><i class="fa-solid fa-face-laugh"></i></span></div>
+                  <div class="is-hidden result-description">Norma dla Twojej płci i wieku wynosi od <span id="lower-bound"></span> do <span id="upper-bound"></span> sek.</div>
+                </div>
+              </div>
+              <!-- end column -->
+              <div class="modal">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                  <header class="modal-card-head">
+                    <p class="modal-card-title">Jak wykonać test próby "8 stóp – wstań i idź"</p>
+                    <button class="delete" aria-label="close"></button>
+                  </header>
+                  <section class="modal-card-body">
+                    <div class="content">
+                      <h6>Jak wykonać test?</h6>
+                      <ol>
+                        <li>Ustaw stabilne krzesło i oznacz punkt w odległości 8 stóp (ok. 2,44 m) przed nim.</li>
+                        <li>Usiądź na krześle, stopy płasko na podłodze, ręce na udach.</li>
+                        <li>Na sygnał wstań, idź jak najszybciej do oznaczonego punktu, okrąż go i wróć na krzesło.</li>
+                        <li>Usiądź z powrotem jak najszybciej i bezpiecznie.</li>
+                        <li>Wprowadź wynik w sekundach do aplikacji.</li>
+                      </ol>
+                    </div>
+                  </section>
+                  <footer class="modal-card-foot">
+                    <div class="buttons">
+                      <button class="button">Zamknij</button>
+                    </div>
+                  </footer>
+                </div>
+              </div>
+              <!-- end modal -->
+            </div>
+            <!-- end columns 7th -->
+          </div>
+          <!-- end container -->
+        </div>
+        <!-- end step-3 -->
+      </div>
+      <!-- end panel -->
+      <footer class="footer">
+        <div class="content">
+          <h6>Informacje o aplikacji</h6>
+          <p class="is-size-7">Wii (Wstań i idź) jest aplikacją wspomagającą diagnozę osób starszych pod kątem sprawności fizycznej. Diagnoza może być wykorzystywana w celu przewidywania ryzyka upadku.
+            Aplikacja nie wykorzystuje plików cookies i nie zbiera danych osobowych. Dane wysyłane poprzez aplikację nie są przechowywane. <br>
+          </p>
+          <script>
+            fetch('version.html')
+              .then(response => response.text())
+              .then(html => document.querySelector("footer .content p").insertAdjacentHTML("afterend", html))
+              .catch(error => console.error('Error loading version:', error));
+          </script>
+        </div>
+      </footer>
+    </div>
+    <!-- end container -->
+    </section>
+    <script src="config.js" defer></script>
+    <script src="script.js" defer></script>
+  </body>
+</html>

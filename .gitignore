@@ -1,4 +1,6 @@
-composer.phar
-/vendor/
+/backend/composer.phar
+/backend/vendor/
+/backend/.env
 
-.env
+/frontend/config.js
+/frontend/version.html

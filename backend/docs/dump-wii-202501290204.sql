@@ -24,6 +24,7 @@ SET row_security = off;
 -- Name: public; Type: SCHEMA; Schema: -; Owner: pg_database_owner
 --
 
+DROP SCHEMA IF EXISTS public CASCADE;
 CREATE SCHEMA public;
 
 
