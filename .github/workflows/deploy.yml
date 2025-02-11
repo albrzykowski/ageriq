@@ -46,7 +46,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: version-html
-        path: version.html
+        path: frontend/public/
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
