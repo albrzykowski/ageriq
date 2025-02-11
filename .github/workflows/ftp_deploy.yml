@@ -31,4 +31,5 @@ jobs:
           backend/Dockerfile
           README.txt
           frontend/Dockerfile
+          frontend/nginx.dev.conf
           frontend/public/config.js
