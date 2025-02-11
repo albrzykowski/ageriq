@@ -9,7 +9,7 @@ on:
       - 'v[0-9]+.[0-9]+.[0-9]'
   workflow_run:
     workflows: ["Inject git tags into HTML that will be displaed in the footer"]
-    branches: [main]
+    branches: [test]
     types: 
       - completed
 
