@@ -1,10 +1,18 @@
+name: 🚀 Deploy website to FTP on push for new version tags
+
 on:
   push:
+    branches:
+      - test
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+-[a-zA-Z]*'
       - 'v[0-9]+.[0-9]+.[0-9]'
+  workflow_run:
+    workflows: ["Inject git tags into HTML that will be displaed in the footer"]
+    branches: [main]
+    types: 
+      - completed
 
-name: 🚀 Deploy website to FTP on push for new version tags
 jobs:
   web-deploy:
     environment: production
