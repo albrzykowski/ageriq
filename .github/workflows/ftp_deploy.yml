@@ -44,3 +44,4 @@ jobs:
           frontend/Dockerfile
           frontend/nginx.dev.conf
           frontend/public/config.js
+          frontend/public/config.sample.js
