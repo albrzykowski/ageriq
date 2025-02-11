@@ -2,8 +2,7 @@ name: 🚀 Deploy website to FTP on push for new version tags
 
 on:
   workflow_run:
-    workflows: [Inject git tags into HTML that will be displaed in the footer]
-    branches: [test]
+    workflows: ["Inject git tags into HTML that will be displaed in the footer"]
     types: 
       - completed
   
@@ -13,6 +12,8 @@ jobs:
     environment: production
     name: 🎉 Deploy
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
