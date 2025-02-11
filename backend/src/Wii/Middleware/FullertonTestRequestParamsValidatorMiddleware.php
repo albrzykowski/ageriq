@@ -31,10 +31,10 @@ class FullertonTestRequestParamsValidatorMiddleware implements MiddlewareInterfa
             $age = (int) $queryParams['age'];
             $result = (float) $queryParams['result'];
             
-            if (!in_array($testCode, array_column(FullertonTest::cases(), 'value'), true)) {
+            if (!in_array($testCode, FullertonTest::cases(), true)) {
                 throw new \InvalidArgumentException('Value of test_code parameter is invalid');
             }
-            if (!in_array($sex, array_column(Sex::cases(), 'value'), true)) {
+            if (!in_array($sex, Sex::cases(), true)) {
                 throw new \InvalidArgumentException('Value of sex parameter is invalid');
             }
             if ($age < 60) {
