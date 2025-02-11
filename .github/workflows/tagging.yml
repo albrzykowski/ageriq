@@ -25,6 +25,7 @@ jobs:
       - name: Inject tags into HTML
         run: |
           touch version.html
+          echo '<p class="is-size-7">Wersje aplikacji: %%PROJECT_TAG%%</p>' >> version.html
           sed -i "s/%%PROJECT_TAG%%/${{ env.PROJECT_TAG }}/g" version.html
       - name: Save version artifact
         uses: actions/upload-artifact@v4
