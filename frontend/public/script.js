@@ -1,3 +1,4 @@
+/* main start */
 let currentStep = 1
 const NR_OF_STEPS = 3
 
@@ -6,99 +7,151 @@ const nextStepButton = document.getElementById('next-step-button')
 
 let params = {}
 
-refreshButtons(currentStep)
+prevStepButton.addEventListener('click', (e) => changeStep(e, -1));
+nextStepButton.addEventListener('click', (e) => changeStep(e, 1));
 
-prevStepButton.addEventListener('click', function(e) {
-    e.preventDefault()
-    currentStep -= 1
-    refreshButtons(currentStep)
-    refreshProgress(currentStep)
-    refreshPanel(currentStep)
-})
+updateUI(currentStep)
 
-nextStepButton.addEventListener('click', function(e) {
-    e.preventDefault()
-    if (!isFormValid(currentStep)) {
-      return false
-    }
-    currentStep += 1
+function changeStep(e, direction) {
+    e.preventDefault();
+    if (direction === 1 && !isFormValid(currentStep)) return;
     
-    refreshButtons(currentStep)
-    refreshProgress(currentStep)
-    refreshPanel(currentStep)
-})
+    currentStep += direction;
+    updateUI();
+}
+
+function updateUI() {
+    refreshButtons(currentStep);
+    refreshProgress(currentStep);
+    refreshPanel(currentStep);
+}
+
+function clearValidationErrors(...elements) {
+    elements.forEach(el => el.classList.remove('is-danger'));
+}
 
 function isFormValid(currentStep) {
-  
-  if (currentStep == 2) {
-    const ageInput = document.querySelector('input[name="age"]')
-    const sexInputs = document.querySelectorAll('input[name="sex"]')
-    const selectedSexInput = document.querySelector('input[name="sex"]:checked')
-    ageInput.classList.remove('is-danger')
-    sexInputs.forEach((el) => {
-      el.classList.remove('is-danger')
-    })
-    
-    if (ageInput.value.trim().length == 0 || ageInput.value.trim() < 60 || ageInput.value.trim() > 94) {
-      ageInput.classList.add('is-danger')
-      return false
+    if (currentStep !== 2) return true;
+
+    const ageInput = document.querySelector('input[name="age"]');
+    const sexInputs = document.querySelectorAll('input[name="sex"]');
+    const selectedSexInput = document.querySelector('input[name="sex"]:checked');
+
+    clearValidationErrors(ageInput, ...sexInputs);
+
+    if (ageInput.value.trim().length === 0 || ageInput.value.trim() < 60 || ageInput.value.trim() > 94) {
+        ageInput.classList.add('is-danger');
+        return false;
     }
 
-    if (!selectedSexInput || !selectedSexInput.checked) {
-      sexInputs.forEach((el) => {
-        el.classList.add('is-danger')
-      }) 
-      return false
+    if (!selectedSexInput) {
+        sexInputs.forEach(el => el.classList.add('is-danger'));
+        return false;
     }
-    params['age'] = ageInput.value
-    params['sex'] = selectedSexInput.value
-  }
-  
-  return true
+
+    params['age'] = ageInput.value;
+    params['sex'] = selectedSexInput.value;
+
+    return true;
 }
 
 function refreshPanel(currentStep) {
-  const stepsToHide = [1, 2, 3].filter(function(e) { return e !== currentStep })
-  const toShow = document.querySelectorAll('.step-' + currentStep)
-  
-  toShow.forEach((el) => {
-    el.classList.remove('is-hidden')
-  })
-  
-  stepsToHide.forEach((el) => {
-      const toHide = document.querySelectorAll('.step-' + el)
-      toHide.forEach((_el) => {
-        _el.classList.add('is-hidden')
-      })
-  })
+    const stepSelector = Array.from({ length: NR_OF_STEPS }, (_, i) => `.step-${i + 1}`).join(', ');
+    document.querySelectorAll(stepSelector).forEach(el => {
+        el.classList.toggle('is-hidden', !el.classList.contains(`step-${currentStep}`));
+    });
 }
+
 
 function refreshProgress(currentStep) {
-    const steps = document.querySelectorAll('ul.steps li')
-    steps.forEach((step, i) => {
-        if (i + 1 == currentStep) {
-            step.classList.add('is-active')
-            // step.querySelector('span.step-maker').classList.add('has-background-success')
-        } else {
-            step.classList.remove('is-active')
-            // step.querySelector('span.step-maker').classList.remove('has-background-success')
-        }
-    })
+    document.querySelectorAll('ul.steps li.is-active').forEach(el => el.classList.remove('is-active'));
+    const activeStep = document.querySelector(`ul.steps li:nth-child(${currentStep})`);
+    if (activeStep) activeStep.classList.add('is-active');
 }
+
 
 function refreshButtons(currentStep) {
-    if (currentStep == 1) {
-        prevStepButton.disabled = true
-    } else {
-        prevStepButton.disabled = false
-    }
-    if (currentStep == NR_OF_STEPS) {
-        nextStepButton.disabled = true
-    } else {
-        nextStepButton.disabled = false
-    }
+    if (!prevStepButton || !nextStepButton) return;
+    
+    prevStepButton.disabled = currentStep === 1;
+    nextStepButton.disabled = currentStep === NR_OF_STEPS;
 }
 
+const buttons = document.querySelectorAll(".test .control button");
+
+buttons.forEach((btn) => {
+  btn.addEventListener("click", async function () {
+    const parentCol = btn.closest("div.test");
+    const resultInput = parentCol.querySelector('.control input');
+    const resultBlock = parentCol.querySelector('div.block.result');
+
+    resultBlock.querySelectorAll('.progress').forEach(el => el.remove());
+
+    const resultValue = resultInput.value.trim();
+    if (resultValue.length === 0) {
+      resultInput.classList.add('is-danger');
+      return;
+    }
+
+    const preloader = document.createElement('progress');
+    preloader.classList.add('progress', 'is-large', 'is-primary');
+    resultBlock.appendChild(preloader);
+
+    resultInput.classList.remove('is-danger');
+
+    params['test_code'] = parentCol.id
+    params['result'] = resultInput.value
+    
+    console.log(params)
+    
+    const requestParams = new URLSearchParams(params);
+
+    try {
+      const response = await fetch(API_URL + '?' + requestParams, { method: 'GET' });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+
+      if (data && data.evaluation) {
+        refreshResult(resultBlock, data);
+      } else {
+        console.error('Invalid data received from the server');
+      }
+    } catch (error) {
+      console.error('Error during fetch:', error);
+    } finally {
+      preloader.remove();
+    }
+  });
+});
+
+function refreshResult(resultBlock, result) {
+  resultBlock.querySelectorAll('.result, .progress').forEach(el => {
+    el.classList.add('is-hidden');
+    if (el.classList.contains('progress')) el.remove();
+  });
+  
+  const resultMapping = {
+    'below normal': '.result.below',
+    'normal': '.result.normal',
+    'above normal': '.result.above'
+  };
+
+  const evaluationSelector = resultMapping[result.evaluation];
+  if (evaluationSelector) {
+    resultBlock.querySelector(evaluationSelector).classList.remove('is-hidden');
+  }
+
+  resultBlock.querySelector('.result-description').classList.remove('is-hidden');
+  resultBlock.querySelector('#lower-bound').textContent = result.min_ref;
+  resultBlock.querySelector('#upper-bound').textContent = result.max_ref;
+}
+/* main end */
+
+/* bulma modal */
 function openModal($el) {
   $el.classList.add('is-active');
 }
@@ -128,56 +181,4 @@ document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .de
     closeModal(modal);
   });
 });
-
-const buttons = document.querySelectorAll(".test .control button")
-buttons.forEach((btn) => {
-  btn.addEventListener("click", function () {
-    const parentCol = btn.closest("div.test")
-    const resultInput = parentCol.querySelector('.control input')
-    const resultBlock = parentCol.querySelector('div.block.result')
-    
-    resultBlock.querySelectorAll('.progress').forEach(el => el.remove())
-    
-    params['test_code'] = parentCol.id
-    params['result'] = resultInput.value
-    
-    if (resultInput.value.trim().length == 0) {
-      resultInput.classList.add('is-danger')
-      return
-    }
-    
-    let preloader = document.createElement('progress')
-    preloader.classList.add('progress')
-    preloader.classList.add('is-large')
-    preloader.classList.add('is-primary')
-    resultBlock.appendChild(preloader)
-    
-    resultInput.classList.remove('is-danger')
-    
-    const requestParams = new URLSearchParams(params);
-
-    fetch(API_URL + '?' + requestParams, {
-      method: 'GET'
-    }).then(response =>  response.json().then(data => refreshResult(resultBlock ,data)))
-      .catch(error => console.error(error))
-    })
-  
-})
-
-function refreshResult(resultBlock, result) {
-  resultBlock.querySelectorAll('.result').forEach((el) => el.classList.add('is-hidden'))
-  resultBlock.querySelectorAll('.progress').forEach(el => el.remove())
-  
-  if (result.evaluation == 'below normal') {
-    resultBlock.querySelector('.result.below').classList.remove('is-hidden')
-  }
-  if (result.evaluation == 'normal') {
-    resultBlock.querySelector('.result.normal').classList.remove('is-hidden')
-  }
-  if (result.evaluation == 'above normal') {
-    resultBlock.querySelector('.result.above').classList.remove('is-hidden')
-  }
-  resultBlock.querySelector('.result-description').classList.remove('is-hidden')
-  resultBlock.querySelector('#lower-bound').textContent = result.min_ref
-  resultBlock.querySelector('#upper-bound').textContent = result.max_ref
-}
+/* bulma modal end */

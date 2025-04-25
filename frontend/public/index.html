@@ -8,11 +8,13 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
       <link rel="stylesheet" href="https://cdn.rawgit.com/octoshrimpy/bulma-o-steps/master/bulma-steps.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+      <link rel="stylesheet" href="https://unpkg.com/gutenberg-css@0.7" media="print">
+      <link rel="stylesheet" href="https://unpkg.com/gutenberg-css@0.7/dist/themes/oldstyle.min.css" media="print">
   </head>
   <body>
     <section class="section">
     <div class="container is-max-desktop">
-      <ul class="steps is-medium is-centered has-content-centered">
+      <ul class="steps is-medium is-centered has-content-centered no-print">
         <li class="steps-segment is-active">
           <span class="steps-marker">
           <span class="icon">
@@ -49,7 +51,7 @@
         <h2 class="panel-heading step-2 is-hidden">Twoje dane</h2>
         <h2 class="panel-heading step-3 is-hidden">Wykonaj test</h2>
         
-        <div class="panel-block">
+        <div class="panel-block no-print">
           <nav>
             <div>
               <button id="previous-step-button" class="button is-light">
@@ -97,7 +99,7 @@
             <ol>
               <li>
                 <i><a href="">Opisać</a></i>
-              <li>
+              </li>
             </ol>
             <p>Do wykonania Senior Fitness Test zaleca się <strong>pomieszczenie o wymiarach minimum 3m × 4m</strong> (dla test 6-minutowego marszu, zalecany jest korytarz o długości minimum 30m <span class="icon has-text-success"><i class="fa-solid fa-road"></i></span>), aby zapewnić bezpieczną przestrzeń do ćwiczeń. Dodatkowo, <strong>podłoże powinno być stabilne</strong>, a <strong>przestrzeń wolna od przeszkód</strong>, aby zminimalizować ryzyko upadków.</p>
             </div>
@@ -637,7 +639,7 @@
       </div>
       <!-- end panel -->
       <footer class="footer">
-        <div class="content">
+        <div class="content no-print">
           <h6>Informacje o aplikacji</h6>
           <p class="is-size-7">Wii (Wstań i idź) jest aplikacją wspomagającą diagnozę osób starszych pod kątem sprawności fizycznej. Diagnoza może być wykorzystywana w celu przewidywania ryzyka upadku.
             Aplikacja nie wykorzystuje plików cookies i nie zbiera danych osobowych. Dane wysyłane poprzez aplikację nie są przechowywane. <br>
