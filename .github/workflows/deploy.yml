@@ -1,0 +1,72 @@
+name: Build and deploy website to FTP on push for new version tags
+
+on:
+  push:
+    branches:
+        - test
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+-[a-zA-Z]*'
+      - 'v[0-9]+.[0-9]+.[0-9]'
+  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Get current project tag
+      id: get_tag
+      run: echo "PROJECT_TAG=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+
+    - name: Inject tags into HTML
+      run: |
+        touch version.html
+        echo '<p class="is-size-7">Wersje aplikacji: %%PROJECT_TAG%%</p>' >> version.html
+        sed -i "s/%%PROJECT_TAG%%/${{ env.PROJECT_TAG }}/g" version.html
+    - name: Save version artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: version-html
+        path: version.html
+  web-deploy:
+    environment: production
+    name: 🎉 Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+    - name: Download artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: version-html
+        path: frontend/public/
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        protocol: ftps
+        server-dir: /ageriq/
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          backend/docs/**
+          backend/docs/**
+          backend/.env
+          backend/composer.json
+          backend/composer.lock
+          backend/Dockerfile
+          README.txt
+          frontend/Dockerfile
+          frontend/nginx.dev.conf
+          frontend/public/config.js
+          frontend/public/config.sample.js
