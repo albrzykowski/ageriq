@@ -22,7 +22,9 @@ jobs:
 
       - name: Inject tags into HTML
         run: |
-          sed -i "s/%%PROJECT_TAG%%/${{ env.PROJECT_TAG }}/g" version.html
+          touch version.html
+          echo '<p class="is-size-7">Wersje aplikacji: %%PROJECT_TAG%%</p>' >> version.html
+          sed -i "s/%%PROJECT_TAG%%/v0.2.0-alpha/g" version.html
 
       - name: Configure Git credentials
         run: |
