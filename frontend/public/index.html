@@ -644,7 +644,7 @@
             Aplikacja nie wykorzystuje plików cookies i nie zbiera danych osobowych. Dane wysyłane poprzez aplikację nie są przechowywane. Aplikacja znajduje się w fazie testów i do czasu ich zakończenia mogą pojawiać się błędy w podawanych wynikach i w jej funkcjonowaniu. Twórca i właściciel serwisu nie bierze odpowiedzialności za błędne działanie aplikacji. Błędy i sugestie prosimy zgłaszać na adres: kontakt[at]ageriq.pl. 
           </p>
           <script>
-            fetch('version.html')
+            fetch('version.html', {cache: "no-store"})
               .then(response => response.text())
               .then(html => document.querySelector("footer .content p").insertAdjacentHTML("afterend", html))
               .catch(error => console.error('Error loading version:', error));
