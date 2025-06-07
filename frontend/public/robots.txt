@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: http://ageriq.pl/sitemap.xml
