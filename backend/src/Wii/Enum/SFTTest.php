@@ -1,7 +1,7 @@
 <?php
 namespace Wii\Enum;
 
-class FullertonTest {
+class SFTTest {
     public const CHAIR_STAND = 'chair_stand';
     public const ARM_CURL = 'arm_curl';
     public const SIX_MIN_WALK = 'six_min_walk';

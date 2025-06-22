@@ -1,7 +1,7 @@
 <?php
 namespace Wii\Dao;
 
-class FullertonTestDao
+class SFTTestDao
 {
     private $pdo;
     

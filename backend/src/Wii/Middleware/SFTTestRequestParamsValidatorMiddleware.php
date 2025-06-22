@@ -8,10 +8,10 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Laminas\Diactoros\Response\JsonResponse;
 use Laminas\Diactoros\Stream;
 use Wii\Enum\Sex;
-use Wii\Enum\FullertonTest;
+use Wii\Enum\SFTTest;
 
 
-class FullertonTestRequestParamsValidatorMiddleware implements MiddlewareInterface
+class SFTTestRequestParamsValidatorMiddleware implements MiddlewareInterface
 {
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
@@ -31,7 +31,7 @@ class FullertonTestRequestParamsValidatorMiddleware implements MiddlewareInterfa
             $age = (int) $queryParams['age'];
             $result = (float) $queryParams['result'];
             
-            if (!in_array($testCode, FullertonTest::cases(), true)) {
+            if (!in_array($testCode, SFTTest::cases(), true)) {
                 throw new \InvalidArgumentException('Value of test_code parameter is invalid');
             }
             if (!in_array($sex, Sex::cases(), true)) {
